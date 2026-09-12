@@ -51,6 +51,9 @@ MainWindow::MainWindow(QWidget *parent)
     playbackLayout->addWidget(ui->pausePush);
     playbackLayout->addWidget(ui->restartPush);
     ui->gridLayout->addWidget(playbackControls, 2, 3, 1, 3, Qt::AlignCenter);
+    ui->playPush->setEnabled(false);
+    ui->pausePush->setEnabled(false);
+    ui->restartPush->setEnabled(false);
 
     ui->screens->setCurrentWidget(ui->mainMenu);
     logs.write("Done setupUi(this) and set current page to mainMenu.\n");
@@ -382,6 +385,10 @@ void MainWindow::selectSongClicked() {
     const bool hasClick = !selected.clickPath.empty();
     const bool hasDrums = !selected.drumsPath.empty();
     const bool hasSong = !selected.songPath.empty();
+
+    ui->playPush->setEnabled(hasSong);
+    ui->pausePush->setEnabled(hasSong);
+    ui->restartPush->setEnabled(hasSong);
 
     ui->clickCheck->setVisible(hasClick);
     ui->drumsCheck->setVisible(hasDrums);
