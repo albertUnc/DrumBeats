@@ -14,7 +14,7 @@ set(CMAKE_PREFIX_PATH "C:/Users/veres/MSYS2/ucrt64/lib/cmake")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia)
 
-add_executable(${PROJECT_NAME}
+add_executable(${PROJECT_NAME} WIN32
     src/main.cpp
     src/MainWindow.cpp
     src/MainWindow.h
