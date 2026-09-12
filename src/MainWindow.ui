@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>851</width>
+    <height>714</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="screens">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>791</width>
+      <height>621</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="mainMenu">
+     <widget class="QWidget" name="mainMenuContents" native="true">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>9</y>
+        <width>781</width>
+        <height>541</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>30</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="titleLabel">
+         <property name="font">
+          <font>
+           <pointsize>50</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: black;</string>
+         </property>
+         <property name="text">
+          <string>DrumBeats</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>60</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="startAppPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>22</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Start playing!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>15</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="mainSettingsPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>22</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="menuQuitPush">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Quit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="settings">
+     <widget class="QWidget" name="settingsContents" native="true">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>9</y>
+        <width>771</width>
+        <height>541</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="adminLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Admin code:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="adminCode"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="backToMenuPush">
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Back to main menu</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="songAdder">
+     <widget class="QWidget" name="songAdderContents" native="true">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>811</width>
+        <height>641</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="title_howToAdd">
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>HOW TO ADD A SONG:</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="howToAddTuto">
+         <property name="maximumSize">
+          <size>
+           <width>470</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You will need to add all 3 tracks (click, song without drums, seperated drums) seperately.&lt;br/&gt;if you don't have one of the tracks, it's fine! Just check 'ignore this' and you can leave&lt;br/&gt;its field empty or type anything in. Anything that doesn't have 'ignore this' checked&lt;br/&gt;will be acknowledged and might error out if not a valid track. How to make tracks like&lt;br/&gt;this at: {link to guide}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::TextFormat::MarkdownText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_20">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string>Song name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_15">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLineEdit" name="clickTrackLine">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string>Click track (absolute path)</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="browseClickTrackPush">
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Browse click track...</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QCheckBox" name="ignoreClickTrackCheck">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Ignore this</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="invalidClickPathLabel">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : red;</string>
+         </property>
+         <property name="text">
+          <string>Invalid path to click track!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_16">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLineEdit" name="songTrackLine">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string>Drumless track (absolute path)</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="browseSongTrackPush">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Browse drumless track...</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QCheckBox" name="ignoreDrumlessTrackCheck">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Ignore this</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="invalidSongPathLabel">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : red;</string>
+         </property>
+         <property name="text">
+          <string>Invalid path to drumless track!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_17">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLineEdit" name="drumsTrackLine">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string>Seperated drums (absolute path)</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="browseDrumsTrackPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Browse seperated drums track...</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QCheckBox" name="ignoreDrumsTrackCheck">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Ignore this</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="invalidDrumsPathLabel">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : red;</string>
+         </property>
+         <property name="text">
+          <string>Invalid path to seperated drums track!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_18">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="addSongButton">
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>16</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>ADD SONG</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_14">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="musicLibrary">
+     <widget class="QWidget" name="muscLibraryContents" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>771</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <spacer name="verticalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="selecLabel">
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Select song:</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QComboBox" name="selectorCombo">
+         <property name="minimumSize">
+          <size>
+           <width>400</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="currentText">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="selectSongPush">
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>SELECT SONG</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="orLabel">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Or:</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="songAdderPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Add new song to library</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_13">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="libraryQuitPush">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Quit app</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_19">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>15</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="mainAppScreen">
+     <widget class="QWidget" name="mainAppContents" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>771</width>
+        <height>511</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="5">
+        <widget class="QPushButton" name="restartPush">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Restart</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="3">
+        <widget class="QProgressBar" name="songProgress">
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QLabel" name="leftSideLabel">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>0:00</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::TextFormat::AutoText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="3">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>150</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="quitAppPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Close app</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>150</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="3">
+        <widget class="QPushButton" name="playPush">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Play</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3">
+        <widget class="QLabel" name="currentlyPlayingUpdateLabel">
+         <property name="font">
+          <font>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nothing</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QCheckBox" name="drumsCheck">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Drums</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="pausePush">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Pause</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="3">
+        <spacer name="verticalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="openLibraryPush">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Open Music Library</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="6">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="6" column="3" colspan="2">
+        <widget class="QCheckBox" name="songCheck">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Song (without drums)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="4">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>150</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="8" column="3">
+        <widget class="QLabel" name="currentlyPlayingLabel">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Currently playing:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3" colspan="2">
+        <widget class="QCheckBox" name="clickCheck">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Click (metronome)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="3">
+        <spacer name="verticalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="10" column="4">
+        <widget class="QLabel" name="rightSideLabel">
+         <property name="maximumSize">
+          <size>
+           <width>230</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>-0:00 | 0:00</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <spacer name="verticalSpacer_11">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>851</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="assets/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
