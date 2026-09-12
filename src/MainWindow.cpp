@@ -131,6 +131,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(songPlayer, &QMediaPlayer::durationChanged, this, &MainWindow::songDurationChanged);
     connect(songPlayer, &QMediaPlayer::positionChanged, this, &MainWindow::songPositionChanged);
     connect(ui->songSlider, &QSlider::sliderMoved, this, &MainWindow::seekSong);
+    connect(ui->leftSideLabel, &QLineEdit::textEdited, this, [this]() {
+        editingPosition = true;
+    });
+    connect(ui->leftSideLabel, &QLineEdit::editingFinished, this, &MainWindow::seekSongFromInput);
     ui->songSlider->installEventFilter(this);
     
     //RANDOM LABELS
@@ -302,7 +306,9 @@ void MainWindow::songDurationChanged(qint64 duration) {
 void MainWindow::songPositionChanged(qint64 position) {
     const qint64 duration = songPlayer->duration();
     ui->songSlider->setValue(position);
-    ui->leftSideLabel->setText(formatTrackTime(position));
+    if (!editingPosition) {
+        ui->leftSideLabel->setText(formatTrackTime(position));
+    }
     ui->rightSideLabel->setText(QString("-%1 | %2")
         .arg(formatTrackTime(duration - position))
         .arg(formatTrackTime(duration)));
@@ -311,6 +317,40 @@ void MainWindow::seekSong(qint64 position) {
     clickPlayer->setPosition(position);
     songPlayer->setPosition(position);
     drumsPlayer->setPosition(position);
+}
+void MainWindow::seekSongFromInput() {
+    const QString input = ui->leftSideLabel->text().trimmed();
+    const QStringList parts = input.split(':', Qt::KeepEmptyParts);
+    qint64 minutes = 0;
+    qint64 seconds = 0;
+    bool valid = false;
+
+    if (parts.size() == 1) {
+        minutes = parts[0].toLongLong(&valid);
+        valid = valid && minutes >= 0;
+    } else if (parts.size() == 2) {
+        bool minutesValid = false;
+        bool secondsValid = false;
+        minutes = parts[0].toLongLong(&minutesValid);
+        seconds = parts[1].toLongLong(&secondsValid);
+        valid = minutesValid && secondsValid
+            && minutes >= 0
+            && seconds >= 0
+            && seconds < 60;
+    }
+
+    const qint64 duration = songPlayer->duration();
+    if (!valid || duration <= 0) {
+        editingPosition = false;
+        ui->leftSideLabel->setText(formatTrackTime(songPlayer->position()));
+        return;
+    }
+
+    const qint64 requestedPosition = (minutes * 60 + seconds) * 1000;
+    const qint64 position = qBound<qint64>(0, requestedPosition, duration);
+    editingPosition = false;
+    seekSong(position);
+    ui->leftSideLabel->setText(formatTrackTime(position));
 }
 void MainWindow::openLibraryClicked() {
     logs.write("Library opened\n");

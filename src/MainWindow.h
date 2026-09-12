@@ -47,6 +47,7 @@ class MainWindow : public QMainWindow {
         void songDurationChanged(qint64 duration);
         void songPositionChanged(qint64 position);
         void seekSong(qint64 position);
+        void seekSongFromInput();
 
         //Music library:
         void selectSongClicked();
@@ -82,6 +83,7 @@ class MainWindow : public QMainWindow {
         QAudioOutput *songOutput;
 
         bool playing = false;
+        bool editingPosition = false;
 
         void resizeBackground();
         void setupLibrary(const bool load = false);

@@ -887,20 +887,20 @@
         </widget>
        </item>
        <item row="10" column="3">
-        <widget class="QProgressBar" name="songProgress">
+        <widget class="QSlider" name="songSlider">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
          <property name="maximum">
           <number>100</number>
          </property>
          <property name="value">
           <number>0</number>
          </property>
-         <property name="textVisible">
-          <bool>false</bool>
-         </property>
         </widget>
        </item>
        <item row="10" column="2">
-        <widget class="QLabel" name="leftSideLabel">
+        <widget class="QLineEdit" name="leftSideLabel">
          <property name="font">
           <font>
            <pointsize>15</pointsize>
@@ -909,8 +909,8 @@
          <property name="text">
           <string>0:00</string>
          </property>
-         <property name="textFormat">
-          <enum>Qt::TextFormat::AutoText</enum>
+         <property name="readOnly">
+          <bool>false</bool>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
