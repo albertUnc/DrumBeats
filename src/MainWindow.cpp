@@ -80,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->restartPush, &QPushButton::clicked, this, &MainWindow::restartClicked);
     connect(ui->openLibraryPush, &QPushButton::clicked, this, &MainWindow::openLibraryClicked);
     connect(ui->quitAppPush, &QPushButton::clicked, this, &MainWindow::onQuitPressed);
+    connect(ui->backToMainPush, &QPushButton::clicked, this, &MainWindow::backToMainMenu);
     //musicLibrary
     logs.write("Connecting music library inputs\n");
     connect(ui->selectSongPush, &QPushButton::clicked, this, &MainWindow::selectSongClicked);
@@ -385,6 +386,20 @@ void MainWindow::selectSongClicked() {
     const bool hasClick = !selected.clickPath.empty();
     const bool hasDrums = !selected.drumsPath.empty();
     const bool hasSong = !selected.songPath.empty();
+
+    playing = false;
+    editingPosition = false;
+    clickPlayer->stop();
+    drumsPlayer->stop();
+    songPlayer->stop();
+    clickPlayer->setSource(QUrl());
+    drumsPlayer->setSource(QUrl());
+    songPlayer->setSource(QUrl());
+    ui->pausePush->setText("Pause");
+    ui->songSlider->setRange(0, 0);
+    ui->songSlider->setValue(0);
+    ui->leftSideLabel->setText(formatTrackTime(0));
+    ui->rightSideLabel->setText("-0:00 | 0:00");
 
     ui->playPush->setEnabled(hasSong);
     ui->pausePush->setEnabled(hasSong);

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="prefix">
+    <file>textures/mainBG.jpg</file>
+    <file>textures/snare-top.jpg</file>
+  </qresource>
+</RCC>

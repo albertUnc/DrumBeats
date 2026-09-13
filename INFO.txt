@@ -1,0 +1,167 @@
+DrumBeats - Copilot Context
+===========================
+
+Purpose
+-------
+DrumBeats is a Windows Qt 6 desktop application for playing synchronized
+music tracks. A song can have up to three local audio files:
+
+1. Click/metronome track
+2. Drumless song track
+3. Separated drums track
+
+The files are played by three QMediaPlayer objects. The drumless song player
+(songPlayer) is the authoritative source for the main duration and playback
+position. The click and drums players are kept synchronized with it.
+
+Project location
+----------------
+Workspace project:
+E:\program\vs code\Qt\DrumBeats
+
+Important files:
+- src/MainWindow.cpp: main window behavior, player controls, seeking, library
+- src/MainWindow.h: MainWindow declarations and state
+- src/MainWindow.ui: Qt Designer UI; CMake AUTOUIC generates ui_MainWindow.h
+- src/main.cpp: application entry point
+- src/Utils.h and src/Utils.cpp: logging, shared types, and utilities
+- src/saveTools.h: song-library persistence
+- src/SETTINGS.h: application paths and supported formats
+- CMakeLists.txt: CMake and Qt build configuration
+- release/: packaged executable and Qt/FFmpeg runtime files
+- build/: generated development build output
+
+Build environment
+-----------------
+- Windows
+- C++20
+- CMake 3.16 or newer
+- Qt 6 Widgets and Multimedia
+- MSYS2 UCRT64 MinGW
+- Qt CMake path currently configured as:
+  C:/Users/veres/MSYS2/ucrt64/lib/cmake
+
+CMake details
+-------------
+CMake enables AUTOMOC, AUTOUIC, and AUTORCC. The executable target is:
+
+add_executable(DrumBeats WIN32 ...)
+
+The WIN32 flag is intentional. It makes the application use the Windows GUI
+subsystem, so launching release/DrumBeats.exe does not open an extra cmd or
+terminal window.
+
+How the playback screen works
+------------------------------
+MainWindow creates three players:
+- clickPlayer
+- drumsPlayer
+- songPlayer
+
+Each has a QAudioOutput. songPlayer signals are connected to:
+- songDurationChanged(qint64)
+- songPositionChanged(qint64)
+
+songPositionChanged updates the QSlider timeline and elapsed/remaining time
+using songPlayer->position(). There is no application timer for elapsed time.
+The player's positionChanged signal is the source of truth, because a separate
+timer can become late or drift from actual audio playback.
+
+The elapsed position field is ui->leftSideLabel, which is a QLineEdit even
+though its old name is retained. It accepts:
+- 1:55 = one minute and 55 seconds
+- 2 = two minutes
+
+When editing, editingPosition temporarily prevents live position updates from
+overwriting typed text. When editing finishes, seekSongFromInput parses and
+validates the input, seeks all players, and clears editingPosition so the field
+immediately follows songPlayer->positionChanged again.
+
+The slider is ui->songSlider. Dragging or clicking it calls seekSong(qint64),
+which sets the position of clickPlayer, songPlayer, and drumsPlayer.
+
+Song selection behavior
+-----------------------
+selectSongClicked loads a song from the library. Before loading the newly
+selected sources, it must reset the old playback state:
+- set playing = false
+- clear editingPosition
+- stop all three players
+- clear all three old QMediaPlayer sources with setSource(QUrl())
+- reset the slider and time labels
+- reset the Pause button text
+
+This reset is important. Without it, selecting another song after playback can
+leave playing=true or leave an old source attached. Then Play can return early
+or the controls can appear broken.
+
+After reset, selectSongClicked loads whichever paths exist in the selected Song.
+Tracks that are not present must remain cleared; do not leave an old source on
+a player when the new song omits that track.
+
+Playback control state
+----------------------
+Play, Pause, and Restart are disabled in the MainWindow constructor before any
+song is loaded. They are enabled in selectSongClicked only when the selected
+Song has a songPath (the drumless/main song track). This prevents pressing Play
+before a source exists and accidentally setting playing=true.
+
+Current control state variable:
+- bool playing = false
+
+Be careful when changing playClicked, pauseClicked, restartClicked, or
+selectSongClicked. The state must be reset when switching songs.
+
+Song library and tracks
+-----------------------
+Songs are loaded from the local AppData storage beside the executable. Saved
+songs contain local file paths, so moving or renaming source audio files can
+make them invalid.
+
+Supported extensions are currently:
+- .mp3
+- .wav
+- .m4a
+
+The application permits missing click or drums tracks. A missing drumless/song
+track means the playback controls should remain disabled because there is no
+main playable song source.
+
+Release build workflow
+----------------------
+When asked to delete and recompile the release executable, follow this exact
+workflow from PowerShell. Do not commit changes unless explicitly requested.
+
+1. Delete the old release executable:
+
+Remove-Item -LiteralPath 'E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe' -Force
+
+2. Configure and build the project. The explicit CMake path avoids PATH issues:
+
+& 'C:\Users\veres\MSYS2\ucrt64\bin\cmake.exe' -S 'E:\program\vs code\Qt\DrumBeats' -B 'E:\program\vs code\Qt\DrumBeats\build' -G 'MinGW Makefiles' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+& 'C:\Users\veres\MSYS2\ucrt64\bin\cmake.exe' --build 'E:\program\vs code\Qt\DrumBeats\build'
+
+3. Copy the successful build to the release folder with the exact required name:
+
+Copy-Item -LiteralPath 'E:\program\vs code\Qt\DrumBeats\build\DrumBeats.exe' -Destination 'E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe' -Force
+
+4. Verify the output exists and matches the build binary:
+
+Get-Item 'E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe'
+Get-FileHash 'E:\program\vs code\Qt\DrumBeats\build\DrumBeats.exe'
+Get-FileHash 'E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe'
+
+Only copy the executable after the build succeeds. The release folder also
+contains required Qt DLLs, FFmpeg DLLs, and plugin folders; keep those beside
+the executable. The final packaged path must be:
+
+E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe
+
+Useful instruction for a new Copilot chat
+------------------------------------------
+Attach this INFO.txt and describe the new bug. Ask Copilot to inspect the
+nearest controlling code path first, make the smallest focused change, build
+the project, and publish the successful executable to release/DrumBeats.exe.
+Preserve the existing WIN32 CMake flag so the release app does not open a
+console window. Do not edit generated files under build/; change source or the
+.ui file and let CMake regenerate them.

@@ -1,5 +1,6 @@
 build/
 .cache/
-assets/
+assets/ # resources.qrc and the images
 
 compile_commands.json
+INFO.txt # Context file for switching agents/chats/models when using ai
