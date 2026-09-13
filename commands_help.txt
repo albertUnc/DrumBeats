@@ -1,0 +1,6 @@
+commands_help.txt
+
+Help for commands(Admin Codes) you can use on the settings page in DrumBeats:
+
+0000reset_data - Deletes the file your songs' data (names and file paths) are stored at
+0001clear_log - Deletes your app log in AppData
