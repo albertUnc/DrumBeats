@@ -241,7 +241,14 @@ void MainWindow::onStartAppPressed() {
 //settings
 void MainWindow::adminCodeEntered(QString input) {
     logs.write(format("Admin code input changed. New text: {}\n", input.toStdString()));
-    logs.write("Admin codes aren't working for now. They will be working in v2.\n", messageType::Warn);
+    if (input.trimmed() == "0000reset_data") {
+        fs::remove(format("{}/AppData/songs_data.dat", getExeDir().string()));
+        close();
+    }
+    if (input.trimmed() == "0001clear_log") {
+        fs::remove(format("{}/AppData/log.txt", getExeDir().string()));
+        close();
+    }
 }
 void MainWindow::backToMainMenu() {
     logs.write("Going back to main menu\n");
