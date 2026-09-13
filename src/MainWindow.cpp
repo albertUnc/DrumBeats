@@ -85,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent)
     logs.write("Connecting music library inputs\n");
     connect(ui->selectSongPush, &QPushButton::clicked, this, &MainWindow::selectSongClicked);
     connect(ui->songAdderPush, &QPushButton::clicked, this, &MainWindow::addNewSongClicked);
+    connect(ui->libraryQuitPush, &QPushButton::clicked, this, &MainWindow::onQuitPressed);
     //songAdder
     logs.write("Connecting song adder inuts\n");
     connect(ui->addSongButton, &QPushButton::clicked, this, &MainWindow::addSongClicked);
