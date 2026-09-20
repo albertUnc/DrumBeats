@@ -1,6 +1,6 @@
 # DrumBeats
 
-DrumBeats is a Windows desktop application for playing multiple synchronized audio tracks for a song. It is designed for setups that use a click track, a drumless song, and separated drums, but any of those tracks can be omitted when adding a song.
+DrumBeats is a Qt desktop application for Windows and Linux that plays multiple synchronized audio tracks for a song. It is designed for setups that use a click track, a drumless song, and separated drums, but any of those tracks can be omitted when adding a song.
 
 ## Features
 
@@ -50,23 +50,45 @@ AppData/log.txt
 
 The application does not include music files. When adding a song, choose audio files that already exist on your computer. The saved library stores their local file paths, so moving or renaming those files can make a saved song unavailable.
 
+### Prebuilt Linux App
+
+The `linux-release/` folder contains a relocatable x86_64 Linux build with the Qt libraries and plugins needed by DrumBeats. From the project root, run:
+
+```bash
+cd linux-release
+./DrumBeats.sh
+```
+
+Keep `DrumBeats`, `DrumBeats.sh`, `qt.conf`, `lib/`, and `plugins/` together. License files are included in `linux-release/licenses/`.
+
+The Linux package bundles the application-owned Qt runtime, but relies on the target distribution for compatible glibc, C/C++ runtime libraries, graphics, display-server, audio, OpenGL, and kernel-driver components. The package does not include music files.
+
 ## Building From Source
 
 ### Requirements
 
-- Windows
+- Windows or x86_64 Linux
 - CMake 3.16 or newer
 - A C++20 compiler
 - Qt 6 with the Widgets and Multimedia modules
 - MinGW or another compiler supported by the installed Qt build
 
-This project was developed with the MSYS2 UCRT64 environment. The current `CMakeLists.txt` expects Qt at:
+The Windows build was developed with the MSYS2 UCRT64 environment. The current Windows configuration expects Qt at:
 
 ```text
 C:/Users/veres/MSYS2/ucrt64/lib/cmake
 ```
 
 If Qt is installed elsewhere, update `CMAKE_PREFIX_PATH` in `CMakeLists.txt` or provide the correct path when configuring CMake.
+
+On Linux, install Qt 6 development packages for Widgets and Multimedia, then configure and build with:
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build
+```
+
+The Linux executable is created at `build/DrumBeats`. The checked-in `linux-release/` package includes a launcher that sets `LD_LIBRARY_PATH` and `QT_PLUGIN_PATH` to its bundled runtime directories.
 
 The source build also requires the `assets/` directory because `assets/resources.qrc` is part of the CMake target. If that directory is not present in a fresh checkout, the resource files must be obtained separately before building.
 
@@ -99,6 +121,7 @@ The deployment folder must contain the resulting DLLs and plugin directories. Re
 DrumBeats/
 ├── assets/                  Qt resource collection and embedded images
 ├── release/                 Prebuilt Windows executable and runtime files
+├── linux-release/           Prebuilt Linux executable, runtime, and licenses
 ├── src/                     C++ source, headers, and Qt Designer UI file
 │   ├── main.cpp             Application entry point
 │   ├── MainWindow.cpp       Main window behavior and signal connections
@@ -130,6 +153,7 @@ Song records are stored as four text lines per song: name, click-track path, dru
 - Keep source files under `src/`.
 - Keep generated build output under `build/`.
 - Keep redistributable binaries and their runtime dependencies under `release/`.
+- Keep redistributable Linux binaries, runtime dependencies, and licenses under `linux-release/`.
 - Update `assets/resources.qrc` when adding embedded images.
 - Re-run CMake after changing the project file or Qt resource collection.
 - Test the packaged executable separately from the development build because the packaged build depends on deployed DLLs and plugin folders.

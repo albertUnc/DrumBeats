@@ -1,10 +1,10 @@
 # Third-Party Notices
 
-DrumBeats is released under the MIT License in [LICENSE](LICENSE). The files in `release/` also contain third-party software, which is covered by its own licenses.
+DrumBeats is released under the MIT License in [LICENSE](LICENSE). The files in `release/`, `windows-release/`, and `linux-release/` also contain third-party software, which is covered by its own licenses.
 
 ## Qt 6
 
-The release package includes Qt 6.11.1 runtime libraries and plugins, including Qt Core, Qt GUI, Qt Widgets, Qt Multimedia, and related plugins.
+The Windows and Linux packages include Qt 6 runtime libraries and plugins, including Qt Core, Qt GUI, Qt Widgets, Qt Multimedia, and related plugins. The exact Qt version depends on the build environment; the current Linux package was built with Qt 6.4.2.
 
 The MSYS2 packages used to build and deploy DrumBeats identify the applicable Qt license as LGPL-3.0-only with the Qt GPL exception, together with additional licenses for components bundled by Qt. Qt's license texts and source code are available from:
 
@@ -17,16 +17,13 @@ Qt remains separate third-party software and is not relicensed under DrumBeats' 
 
 ## FFmpeg
 
-The release package includes FFmpeg 8.1.2 libraries used by Qt Multimedia:
+The Windows package includes FFmpeg 8.1.2 libraries used by Qt Multimedia. The Linux package includes Qt's FFmpeg multimedia plugin and uses compatible codec libraries provided by its build/runtime environment:
 
-- `avcodec-62.dll`
-- `avformat-62.dll`
-- `avutil-60.dll`
-- `swresample-6.dll`
-- `swscale-9.dll`
-- `multimedia/ffmpegmediaplugin.dll`
+- Windows FFmpeg DLLs beside the executable
+- Windows `multimedia/ffmpegmediaplugin.dll`
+- Linux `plugins/multimedia/libffmpegmediaplugin.so`
 
-The MSYS2 package used for this build identifies FFmpeg as **GPL-3.0-or-later**.
+The MSYS2 package used for the Windows build identifies FFmpeg as **GPL-3.0-or-later**. The Linux package's exact FFmpeg licensing and codec obligations follow the libraries and plugin used by the Linux build; corresponding package license files are included under `linux-release/licenses/`.
 
 - FFmpeg website: <https://ffmpeg.org/>
 - FFmpeg source code: <https://git.ffmpeg.org/ffmpeg.git>

@@ -3,7 +3,7 @@ DrumBeats - Copilot Context
 
 Purpose
 -------
-DrumBeats is a Windows Qt 6 desktop application for playing synchronized
+DrumBeats is a Windows and Linux Qt 6 desktop application for playing synchronized
 music tracks. A song can have up to three local audio files:
 
 1. Click/metronome track
@@ -28,17 +28,18 @@ Important files:
 - src/saveTools.h: song-library persistence
 - src/SETTINGS.h: application paths and supported formats
 - CMakeLists.txt: CMake and Qt build configuration
-- release/: packaged executable and Qt/FFmpeg runtime files
+- release/: packaged Windows executable and Qt/FFmpeg runtime files
+- linux-release/: packaged Linux executable, Qt runtime, plugins, launcher, and licenses
 - build/: generated development build output
 
 Build environment
 -----------------
-- Windows
+- Windows or x86_64 Linux
 - C++20
 - CMake 3.16 or newer
 - Qt 6 Widgets and Multimedia
-- MSYS2 UCRT64 MinGW
-- Qt CMake path currently configured as:
+- MSYS2 UCRT64 MinGW for Windows; a compatible C++ toolchain for Linux
+- Windows Qt CMake path currently configured as:
   C:/Users/veres/MSYS2/ucrt64/lib/cmake
 
 CMake details
@@ -156,6 +157,26 @@ contains required Qt DLLs, FFmpeg DLLs, and plugin folders; keep those beside
 the executable. The final packaged path must be:
 
 E:\program\vs code\Qt\DrumBeats\release\DrumBeats.exe
+
+Linux release workflow
+----------------------
+The Linux package is stored at `linux-release/`. It contains the x86_64
+`DrumBeats` executable, `DrumBeats.sh` launcher, bundled Qt libraries under
+`lib/`, Qt plugins under `plugins/`, `qt.conf`, and license files under
+`licenses/`.
+
+Run the packaged Linux application from any working directory with:
+
+  ./linux-release/DrumBeats.sh
+
+The launcher sets `LD_LIBRARY_PATH` and `QT_PLUGIN_PATH` relative to itself.
+The package does not bundle host-provided glibc, graphics, display-server,
+audio, OpenGL, or kernel-driver libraries. Those must be compatible with the
+target x86_64 Linux distribution.
+
+After a successful Linux build, copy the resulting `build/DrumBeats` into
+`linux-release/DrumBeats` and preserve the existing runtime directories and
+license files. Do not edit generated files under `build/`.
 
 Useful instruction for a new Copilot chat
 ------------------------------------------
