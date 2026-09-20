@@ -3,7 +3,6 @@
 #include <QStyleFactory>
 #include <filesystem>
 #include <fstream>
-#include <windows.h>
 #include "MainWindow.h"
 #include "Utils.h"
 #include "SETTINGS.h"

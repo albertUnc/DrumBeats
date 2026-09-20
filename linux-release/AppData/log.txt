@@ -1,0 +1,64 @@
+
+
+Logs loaded. Current date: 2026 Sep 20.
+Current source is: [main.cpp] 
+
+18:10:57 [main.cpp] [INFO] Main function just started, setting up and running QApplication.
+18:10:57 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+18:10:57 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+18:10:57 [MainWindow.cpp] [INFO] Started main window constructor.
+18:10:57 [MainWindow.cpp] [INFO] Done setupUi(this) and set current page to mainMenu.
+18:10:57 [MainWindow.cpp] [INFO] Connecting all the user inputs to their functions...
+18:10:57 [MainWindow.cpp] [INFO] Connecting main menu inputs
+18:10:57 [MainWindow.cpp] [INFO] Connecting settings inputs
+18:10:57 [MainWindow.cpp] [INFO] Connecting main app inputs
+18:10:57 [MainWindow.cpp] [INFO] Connecting music library inputs
+18:10:57 [MainWindow.cpp] [INFO] Connecting song adder inuts
+18:10:57 [MainWindow.cpp] [INFO] Connected input sources to dedicated handlers.
+18:10:57 [MainWindow.cpp] [INFO] Setting up background...
+18:10:57 [MainWindow.cpp] [INFO] Successfully loaded background with ratio 1.3928571428571428
+18:10:57 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=100, height=30, windowRatio=3.3333333333333335
+18:10:57 [MainWindow.cpp] [INFO] Creating all the players for the pointers...
+18:10:58 [MainWindow.cpp] [INFO] Creating audio output...
+18:10:58 [MainWindow.cpp] [INFO] Setting invalid path labels' visible value to false
+18:10:58 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=851, height=692, windowRatio=1.2297687861271676
+
+
+Logs loaded. Current date: 2026 Sep 20.
+Current source is: [main.cpp] 
+
+18:13:29 [main.cpp] [INFO] Main function just started, setting up and running QApplication.
+18:13:29 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+18:13:29 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+18:13:29 [MainWindow.cpp] [INFO] Started main window constructor.
+18:13:29 [MainWindow.cpp] [INFO] Done setupUi(this) and set current page to mainMenu.
+18:13:29 [MainWindow.cpp] [INFO] Connecting all the user inputs to their functions...
+18:13:29 [MainWindow.cpp] [INFO] Connecting main menu inputs
+18:13:29 [MainWindow.cpp] [INFO] Connecting settings inputs
+18:13:29 [MainWindow.cpp] [INFO] Connecting main app inputs
+18:13:29 [MainWindow.cpp] [INFO] Connecting music library inputs
+18:13:29 [MainWindow.cpp] [INFO] Connecting song adder inuts
+18:13:29 [MainWindow.cpp] [INFO] Connected input sources to dedicated handlers.
+18:13:29 [MainWindow.cpp] [INFO] Setting up background...
+18:13:29 [MainWindow.cpp] [INFO] Successfully loaded background with ratio 1.3928571428571428
+18:13:29 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=100, height=30, windowRatio=3.3333333333333335
+18:13:29 [MainWindow.cpp] [INFO] Creating all the players for the pointers...
+18:13:29 [MainWindow.cpp] [INFO] Creating audio output...
+18:13:29 [MainWindow.cpp] [INFO] Setting invalid path labels' visible value to false
+18:13:30 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=851, height=692, windowRatio=1.2297687861271676

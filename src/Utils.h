@@ -9,7 +9,9 @@
 #include <filesystem>
 #include <vector>
 #include <algorithm>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 using std::format, std::ofstream, std::string, std::vector;
 namespace chrono = std::chrono;
 namespace fs = std::filesystem;
@@ -19,10 +21,17 @@ long long getNowSeconds();
 string readDate(long long s);
 
 inline fs::path getExeDir() {
+#ifdef _WIN32
     wchar_t path[MAX_PATH] = {};
     GetModuleFileNameW(nullptr, path, MAX_PATH);
     fs::path unc(path);
     return unc.parent_path();
+#else
+    std::error_code error;
+    fs::path executable = fs::read_symlink("/proc/self/exe", error);
+    if (!error) return executable.parent_path();
+    return fs::current_path();
+#endif
 }
 
 inline std::ofstream makeLog() {
