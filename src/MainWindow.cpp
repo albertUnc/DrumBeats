@@ -33,6 +33,21 @@ MainWindow::MainWindow(QWidget *parent)
         auto *pageLayout = new QVBoxLayout(page);
         pageLayout->setContentsMargins(0, 0, 0, 0);
         pageLayout->addWidget(contents);
+
+        if (contents->objectName() == "mainAppContents") return;
+
+        auto *contentsLayout = qobject_cast<QVBoxLayout *>(contents->layout());
+        if (!contentsLayout) return;
+
+        for (int index = 0; index < contentsLayout->count(); ++index) {
+            QWidget *widget = contentsLayout->itemAt(index)->widget();
+            if (!widget) continue;
+
+            contentsLayout->setAlignment(widget, Qt::AlignHCenter);
+            if (qobject_cast<QLineEdit *>(widget)) {
+                widget->setSizePolicy(QSizePolicy::Maximum, widget->sizePolicy().verticalPolicy());
+            }
+        }
     };
     addPageLayout(ui->mainMenu, ui->mainMenuContents);
     addPageLayout(ui->settings, ui->settingsContents);
@@ -133,6 +148,18 @@ MainWindow::MainWindow(QWidget *parent)
     clickPlayer->setAudioOutput(clickOutput);
     drumsPlayer->setAudioOutput(drumsOutput);
     songPlayer->setAudioOutput(songOutput);
+    clickOutput->setVolume(1.0);
+    drumsOutput->setVolume(1.0);
+    songOutput->setVolume(1.0);
+    connect(ui->clickVolumeSlider, &QSlider::valueChanged, this, [this](int value) {
+        clickOutput->setVolume(value / 100.0);
+    });
+    connect(ui->drumsVolumeSlider, &QSlider::valueChanged, this, [this](int value) {
+        drumsOutput->setVolume(value / 100.0);
+    });
+    connect(ui->drumlessVolumeSlider, &QSlider::valueChanged, this, [this](int value) {
+        songOutput->setVolume(value / 100.0);
+    });
     connect(songPlayer, &QMediaPlayer::durationChanged, this, &MainWindow::songDurationChanged);
     connect(songPlayer, &QMediaPlayer::positionChanged, this, &MainWindow::songPositionChanged);
     connect(ui->songSlider, &QSlider::sliderMoved, this, &MainWindow::seekSong);
@@ -416,6 +443,9 @@ void MainWindow::selectSongClicked() {
     ui->clickCheck->setVisible(hasClick);
     ui->drumsCheck->setVisible(hasDrums);
     ui->songCheck->setVisible(hasSong);
+    ui->clickVolumeSlider->setVisible(hasClick);
+    ui->drumsVolumeSlider->setVisible(hasDrums);
+    ui->drumlessVolumeSlider->setVisible(hasSong);
     ui->clickCheck->setChecked(hasClick);
     ui->drumsCheck->setChecked(hasDrums);
     ui->songCheck->setChecked(hasSong);
