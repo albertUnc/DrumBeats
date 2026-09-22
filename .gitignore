@@ -3,6 +3,7 @@ build/
 assets/ # resources.qrc and the images
 linux-release/AppData/
 windows-release/AppData/
+windows-release/ # Not up to date
 
 compile_commands.json
 INFO.txt # Context file for switching agents/chats/models when using ai
