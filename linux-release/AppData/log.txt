@@ -468,3 +468,77 @@ Name:
 18:54:16 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=851, height=692, windowRatio=1.2297687861271676
 18:54:18 [MainWindow.cpp] [INFO] Quit pressed. Quitting app...
 18:54:18 [MainWindow.cpp] [INFO] Destructor of MainWindow ran...Deleting ui
+
+
+Logs loaded. Current date: 2026 Sep 22.
+Current source is: [main.cpp] 
+
+20:31:35 [main.cpp] [INFO] Main function just started, setting up and running QApplication.
+20:31:36 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+20:31:36 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+20:31:36 [MainWindow.cpp] [INFO] Started main window constructor.
+20:31:36 [MainWindow.cpp] [INFO] Done setupUi(this) and set current page to mainMenu.
+20:31:36 [MainWindow.cpp] [INFO] Connecting all the user inputs to their functions...
+20:31:36 [MainWindow.cpp] [INFO] Connecting main menu inputs
+20:31:36 [MainWindow.cpp] [INFO] Connecting settings inputs
+20:31:36 [MainWindow.cpp] [INFO] Connecting main app inputs
+20:31:36 [MainWindow.cpp] [INFO] Connecting music library inputs
+20:31:36 [MainWindow.cpp] [INFO] Connecting song adder inuts
+20:31:36 [MainWindow.cpp] [INFO] Connected input sources to dedicated handlers.
+20:31:36 [MainWindow.cpp] [INFO] Setting up background...
+20:31:36 [MainWindow.cpp] [INFO] Successfully loaded background with ratio 1.3928571428571428
+20:31:36 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=100, height=30, windowRatio=3.3333333333333335
+20:31:36 [MainWindow.cpp] [INFO] Creating all the players for the pointers...
+20:31:36 [MainWindow.cpp] [INFO] Creating audio output...
+20:31:36 [MainWindow.cpp] [INFO] Setting invalid path labels' visible value to false
+20:31:36 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=851, height=692, windowRatio=1.2297687861271676
+20:31:38 [MainWindow.cpp] [INFO] Start app clicked. Starting main app screen...
+20:31:38 [MainWindow.cpp] [INFO] Switching background pixmap to the main app's background picture.
+20:31:38 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=851, height=692, windowRatio=1.2297687861271676
+20:31:38 [MainWindow.cpp] [INFO] Switching current screen...
+20:31:42 [MainWindow.cpp] [INFO] Destructor of MainWindow ran...Deleting ui
+
+
+Logs loaded. Current date: 2026 Sep 22.
+Current source is: [main.cpp] 
+
+20:33:33 [main.cpp] [INFO] Main function just started, setting up and running QApplication.
+20:33:33 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+20:33:33 [main.cpp] [INFO] Creating new song. Details:
+Click track: 
+Song track: 
+Drums track: 
+Name: 
+20:33:33 [MainWindow.cpp] [INFO] Started main window constructor.
+20:33:33 [MainWindow.cpp] [INFO] Done setupUi(this) and set current page to mainMenu.
+20:33:33 [MainWindow.cpp] [INFO] Connecting all the user inputs to their functions...
+20:33:33 [MainWindow.cpp] [INFO] Connecting main menu inputs
+20:33:33 [MainWindow.cpp] [INFO] Connecting settings inputs
+20:33:33 [MainWindow.cpp] [INFO] Connecting main app inputs
+20:33:33 [MainWindow.cpp] [INFO] Connecting music library inputs
+20:33:33 [MainWindow.cpp] [INFO] Connecting song adder inuts
+20:33:33 [MainWindow.cpp] [INFO] Connected input sources to dedicated handlers.
+20:33:33 [MainWindow.cpp] [INFO] Setting up background...
+20:33:33 [MainWindow.cpp] [INFO] Successfully loaded background with ratio 1.3928571428571428
+20:33:33 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=100, height=30, windowRatio=3.3333333333333335
+20:33:33 [MainWindow.cpp] [INFO] Creating all the players for the pointers...
+20:33:33 [MainWindow.cpp] [INFO] Creating audio output...
+20:33:33 [MainWindow.cpp] [INFO] Setting invalid path labels' visible value to false
+20:33:33 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=844, height=575, windowRatio=1.4678260869565218
+20:33:35 [MainWindow.cpp] [INFO] Start app clicked. Starting main app screen...
+20:33:35 [MainWindow.cpp] [INFO] Switching background pixmap to the main app's background picture.
+20:33:35 [MainWindow.cpp] [INFO] resizeEvent triggered. Details: width=844, height=575, windowRatio=1.4678260869565218
+20:33:35 [MainWindow.cpp] [INFO] Switching current screen...
+20:33:36 [MainWindow.cpp] [INFO] Destructor of MainWindow ran...Deleting ui
