@@ -9,6 +9,7 @@
 #include <filesystem>
 #include <vector>
 #include <algorithm>
+#include <utils/platform.hpp>
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -35,8 +36,9 @@ inline fs::path getExeDir() {
 }
 
 inline std::ofstream makeLog() {
-    fs::path relative(LOG_EXE_RELATIVE_PATH);
-    fs::path path = getExeDir() / relative;
+    platform::setAppName(NAME);
+    fs::path relative(LOG_APPDATA_RELATIVE_PATH);
+    fs::path path = platform::appDataPath() / relative;
     fs::create_directories(path.parent_path());
     if (CLEAR_LOG_ON_LOAD) {
         return std::ofstream(path, std::ios::trunc);
@@ -59,8 +61,9 @@ class Log {
     ofstream file;
     string signature = "[UNKNOWN] ";
     bool clearIfNeeded() {
+        platform::setAppName(NAME);
         //get abs path of current log
-        fs::path fileAbs = getExeDir() / LOG_EXE_RELATIVE_PATH;
+        fs::path fileAbs = platform::appDataPath() / LOG_APPDATA_RELATIVE_PATH;
         if (!fs::exists(fileAbs)) return true;
         //if too big
         if (fs::file_size(fileAbs) >= MAX_LOG_SIZE) {

@@ -41,12 +41,17 @@ The packaged build includes:
 - `LICENSE`
 - `THIRD_PARTY_NOTICES.md`
 
-On first launch, the application creates an `AppData/` folder beside the executable. Your song library and application log are stored there:
+On first launch, the application stores its data in the OS-appropriate appdata directory for the app name `DrumBeats`. The song library and log are stored under that location, using:
 
 ```text
-AppData/songs_data.dat
-AppData/log.txt
+<OS appdata folder>/DrumBeats/songs_data.dat
+<OS appdata folder>/DrumBeats/log.txt
 ```
+
+On Windows, this is typically under `%APPDATA%/DrumBeats/`.
+On Linux, this is typically under `$XDG_DATA_HOME/DrumBeats/` or `~/.local/share/DrumBeats/`.
+
+Older builds stored these files next to the executable in an `AppData/` folder. The app includes migration/admin commands to move or clean up the legacy files.
 
 The application does not include music files. When adding a song, choose audio files that already exist on your computer. The saved library stores their local file paths, so moving or renaming those files can make a saved song unavailable.
 
@@ -146,7 +151,16 @@ Three `QMediaPlayer` instances play the selected click, drum, and drumless-song 
 
 Application images are listed in `assets/resources.qrc`. CMake's automatic resource processing embeds those resources into the executable during the build, so the packaged application does not need the original image files beside it.
 
-Song records are stored as four text lines per song: name, click-track path, drumless-song path, and drum-track path. The file is saved relative to the executable in `AppData/songs_data.dat`.
+Song records are stored as four text lines per song: name, click-track path, drumless-song path, and drum-track path. The file is saved in the appdata directory for the app, not beside the executable. The legacy relative-to-executable `AppData/songs_data.dat` path is only used for migration or cleanup of older installs.
+
+## Admin Commands
+
+The settings page includes hidden admin codes for maintenance:
+
+- `0000reset_data` — deletes the current song data file in the appdata location.
+- `0001clear_log` — deletes the current log file in the appdata location.
+- `0002move_data` — moves legacy `AppData` files from the executable-relative folder into the new appdata location.
+- `0003delete_old` — deletes the legacy `AppData` folder beside the executable.
 
 ## Development Notes
 

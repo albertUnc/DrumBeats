@@ -3,6 +3,8 @@
 static constexpr string currentSig = "[saveTools.h] ";
 
 inline void saveSongs() {
+    platform::setAppName(NAME);
+
     string oldSig = logs.getCurrentSignature();
     logs.setSignature(currentSig);
     logs.write("Saving songs...\n");
@@ -13,7 +15,7 @@ inline void saveSongs() {
         return;
     }
     //1.Get absolute path to file to save to
-    fs::path absPath = getExeDir() / SONGS_EXE_RELATIVE_PATH;
+    fs::path absPath = platform::appDataPath() / SONGS_APPDATA_RELATIVE_PATH;
     //2.Check for file
     if (!fs::exists(absPath)) {
         if (!fs::exists(absPath.parent_path())) {
@@ -38,10 +40,12 @@ inline void saveSongs() {
     logs.setSignature(oldSig);
 }
 inline void loadSongs() {
+    platform::setAppName(NAME);
+
     string oldSig = logs.getCurrentSignature();
     logs.setSignature(currentSig);
     logs.write("Loading songs...\n");
-    fs::path absPath = getExeDir() / SONGS_EXE_RELATIVE_PATH;
+    fs::path absPath = platform::appDataPath() / SONGS_APPDATA_RELATIVE_PATH;
     if (!fs::exists(absPath)) {
         logs.write("Path to save file doesn't exist!", messageType::Error);
         logs.setSignature(oldSig);

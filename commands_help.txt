@@ -1,6 +1,12 @@
 commands_help.txt
 
-Help for commands(Admin Codes) you can use on the settings page in DrumBeats:
+Help for commands (admin codes) you can use on the settings page in DrumBeats:
 
-0000reset_data - Deletes the file your songs' data (names and file paths) are stored at. Note: This will crash/close the application.
-0001clear_log - Deletes your app log in AppData. Note: This will crash/close the application
+0000reset_data - Deletes the file where your songs' metadata is stored (names and file paths) in the current appdata location. Note: This will close the application.
+0001clear_log - Deletes the app log in the current appdata location. Note: This will close the application.
+0002move_data - Moves the old exe-relative AppData files into the new appdata folder for this app, preserving the old songs data and log if they exist.
+0003delete_old - Deletes the legacy AppData folder next to the executable (old save location). Note: This removes the old backup folder only.
+
+Notes:
+- Current appdata location is based on the OS-specific appdata folder for the app name "DrumBeats".
+- Old location is the relative AppData folder next to the executable, used by older versions.

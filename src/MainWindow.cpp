@@ -270,11 +270,43 @@ void MainWindow::onStartAppPressed() {
 void MainWindow::adminCodeEntered(QString input) {
     logs.write(format("Admin code input changed. New text: {}\n", input.toStdString()));
     if (input.trimmed() == "0000reset_data") {
-        fs::remove(format("{}/AppData/songs_data.dat", getExeDir().string()));
+        platform::setAppName(NAME);
+        const fs::path dataPath = platform::appDataPath() / SONGS_APPDATA_RELATIVE_PATH;
+        fs::remove(dataPath);
         close();
     }
     if (input.trimmed() == "0001clear_log") {
-        fs::remove(format("{}/AppData/log.txt", getExeDir().string()));
+        platform::setAppName(NAME);
+        const fs::path logPath = platform::appDataPath() / LOG_APPDATA_RELATIVE_PATH;
+        fs::remove(logPath);
+        close();
+    }
+    if (input.trimmed() == "0002move_data") {
+        platform::setAppName(NAME);
+
+        const fs::path oldAppDataRoot = getExeDir() / "AppData";
+        const fs::path oldLogPath = oldAppDataRoot / LOG_APPDATA_RELATIVE_PATH;
+        const fs::path oldDataPath = oldAppDataRoot / SONGS_APPDATA_RELATIVE_PATH;
+
+        const fs::path newLogPath = platform::appDataPath() / LOG_APPDATA_RELATIVE_PATH;
+        const fs::path newDataPath = platform::appDataPath() / SONGS_APPDATA_RELATIVE_PATH;
+
+        if (fs::exists(oldLogPath) && !fs::exists(newLogPath)) {
+            fs::create_directories(newLogPath.parent_path());
+            fs::rename(oldLogPath, newLogPath);
+        }
+        if (fs::exists(oldDataPath) && !fs::exists(newDataPath)) {
+            fs::create_directories(newDataPath.parent_path());
+            fs::rename(oldDataPath, newDataPath);
+        }
+
+        close();
+    }
+    if (input.trimmed() == "0003delete_old") {
+        const fs::path oldAppDataRoot = getExeDir() / "AppData";
+        if (fs::exists(oldAppDataRoot)) {
+            fs::remove_all(oldAppDataRoot);
+        }
         close();
     }
 }
