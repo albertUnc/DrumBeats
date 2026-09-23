@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
-    <height>597</height>
+    <width>751</width>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -805,7 +805,25 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="libraryBackToMainPush">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Back to main menu</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QPushButton" name="libraryQuitPush">
          <property name="maximumSize">
           <size>
@@ -1261,7 +1279,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>721</width>
+     <width>751</width>
      <height>20</height>
     </rect>
    </property>

@@ -101,6 +101,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->selectSongPush, &QPushButton::clicked, this, &MainWindow::selectSongClicked);
     connect(ui->songAdderPush, &QPushButton::clicked, this, &MainWindow::addNewSongClicked);
     connect(ui->libraryQuitPush, &QPushButton::clicked, this, &MainWindow::onQuitPressed);
+    connect(ui->libraryBackToMainPush, &QPushButton::clicked, this, &MainWindow::backToMainMenu);
     //songAdder
     logs.write("Connecting song adder inuts\n");
     connect(ui->addSongButton, &QPushButton::clicked, this, &MainWindow::addSongClicked);
