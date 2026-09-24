@@ -48,6 +48,8 @@ class MainWindow : public QMainWindow {
         void songPositionChanged(qint64 position);
         void seekSong(qint64 position);
         void seekSongFromInput();
+        void playbackSpeedChanged(int percentage);
+        void playbackSpeedFromInput();
 
         //Music library:
         void selectSongClicked();
@@ -81,6 +83,7 @@ class MainWindow : public QMainWindow {
         QAudioOutput *clickOutput;
         QAudioOutput *drumsOutput;
         QAudioOutput *songOutput;
+        QMediaPlayer *timelinePlayer = nullptr;
 
         bool playing = false;
         bool editingPosition = false;

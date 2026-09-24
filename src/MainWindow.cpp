@@ -6,6 +6,7 @@
 #include <QEvent>
 #include <QHBoxLayout>
 #include <QMouseEvent>
+#include <QRegularExpression>
 #include <QSlider>
 #include <QVBoxLayout>
 
@@ -161,7 +162,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->drumlessVolumeSlider, &QSlider::valueChanged, this, [this](int value) {
         songOutput->setVolume(value / 100.0);
     });
+    ui->playbackSpeedSlider->setRange(50, 150);
+    ui->playbackSpeedSlider->setValue(100);
+    connect(ui->playbackSpeedSlider, &QSlider::valueChanged, this, &MainWindow::playbackSpeedChanged);
+    connect(ui->playbackSpeedLine, &QLineEdit::editingFinished, this, &MainWindow::playbackSpeedFromInput);
+    connect(clickPlayer, &QMediaPlayer::durationChanged, this, &MainWindow::songDurationChanged);
+    connect(drumsPlayer, &QMediaPlayer::durationChanged, this, &MainWindow::songDurationChanged);
     connect(songPlayer, &QMediaPlayer::durationChanged, this, &MainWindow::songDurationChanged);
+    connect(clickPlayer, &QMediaPlayer::positionChanged, this, &MainWindow::songPositionChanged);
+    connect(drumsPlayer, &QMediaPlayer::positionChanged, this, &MainWindow::songPositionChanged);
     connect(songPlayer, &QMediaPlayer::positionChanged, this, &MainWindow::songPositionChanged);
     connect(ui->songSlider, &QSlider::sliderMoved, this, &MainWindow::seekSong);
     connect(ui->leftSideLabel, &QLineEdit::textEdited, this, [this]() {
@@ -226,7 +235,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
     if (watched == ui->songSlider && event->type() == QEvent::MouseButtonRelease) {
         auto *mouseEvent = static_cast<QMouseEvent *>(event);
         if (mouseEvent->button() == Qt::LeftButton) {
-            const qint64 duration = songPlayer->duration();
+            const qint64 duration = timelinePlayer ? timelinePlayer->duration() : 0;
             const int sliderWidth = ui->songSlider->width();
             if (duration > 0 && sliderWidth > 0) {
                 const int clickPosition = qBound(
@@ -325,6 +334,33 @@ void MainWindow::drumsToggled(bool checked) {
 void MainWindow::songToggled(bool checked) {
     songOutput->setMuted(!checked);
 }
+void MainWindow::playbackSpeedChanged(int percentage) {
+    const qreal playbackRate = percentage / 100.0;
+    clickPlayer->setPlaybackRate(playbackRate);
+    drumsPlayer->setPlaybackRate(playbackRate);
+    songPlayer->setPlaybackRate(playbackRate);
+    ui->playbackSpeedLine->setText(QString("%1%").arg(percentage));
+}
+void MainWindow::playbackSpeedFromInput() {
+    QString input = ui->playbackSpeedLine->text().trimmed();
+    if (input.endsWith('%')) {
+        input.chop(1);
+    }
+
+    bool valid = input.contains(QRegularExpression(QStringLiteral("^[0-9]+$")));
+    bool conversionSucceeded = false;
+    const int percentage = input.toInt(&conversionSucceeded);
+    valid = valid
+        && conversionSucceeded
+        && percentage >= ui->playbackSpeedSlider->minimum()
+        && percentage <= ui->playbackSpeedSlider->maximum();
+
+    if (valid) {
+        ui->playbackSpeedSlider->setValue(percentage);
+    } else {
+        playbackSpeedChanged(ui->playbackSpeedSlider->value());
+    }
+}
 void MainWindow::playClicked() {
     if (playing) return;
     playing = true;
@@ -369,14 +405,16 @@ QString formatTrackTime(qint64 milliseconds) {
     return QString("%1:%2").arg(minutes).arg(seconds, 2, 10, QChar('0'));
 }
 void MainWindow::songDurationChanged(qint64 duration) {
+    if (sender() != timelinePlayer) return;
     ui->songSlider->setRange(0, qMax<qint64>(0, duration));
-    ui->songSlider->setValue(songPlayer->position());
+    ui->songSlider->setValue(timelinePlayer->position());
     ui->rightSideLabel->setText(QString("-%1 | %2")
-        .arg(formatTrackTime(duration - songPlayer->position()))
+        .arg(formatTrackTime(duration - timelinePlayer->position()))
         .arg(formatTrackTime(duration)));
 }
 void MainWindow::songPositionChanged(qint64 position) {
-    const qint64 duration = songPlayer->duration();
+    if (sender() != timelinePlayer) return;
+    const qint64 duration = timelinePlayer->duration();
     ui->songSlider->setValue(position);
     if (!editingPosition) {
         ui->leftSideLabel->setText(formatTrackTime(position));
@@ -411,7 +449,7 @@ void MainWindow::seekSongFromInput() {
             && seconds < 60;
     }
 
-    const qint64 duration = songPlayer->duration();
+    const qint64 duration = timelinePlayer ? timelinePlayer->duration() : 0;
     if (!valid || duration <= 0) {
         editingPosition = false;
         ui->leftSideLabel->setText(formatTrackTime(songPlayer->position()));
@@ -454,6 +492,8 @@ void MainWindow::selectSongClicked() {
     const bool hasClick = !selected.clickPath.empty();
     const bool hasDrums = !selected.drumsPath.empty();
     const bool hasSong = !selected.songPath.empty();
+    const bool hasAnyTrack = hasClick || hasDrums || hasSong;
+    timelinePlayer = hasSong ? songPlayer : (hasDrums ? drumsPlayer : clickPlayer);
 
     playing = false;
     editingPosition = false;
@@ -466,12 +506,13 @@ void MainWindow::selectSongClicked() {
     ui->pausePush->setText("Pause");
     ui->songSlider->setRange(0, 0);
     ui->songSlider->setValue(0);
+    ui->playbackSpeedSlider->setValue(100);
     ui->leftSideLabel->setText(formatTrackTime(0));
     ui->rightSideLabel->setText("-0:00 | 0:00");
 
-    ui->playPush->setEnabled(hasSong);
-    ui->pausePush->setEnabled(hasSong);
-    ui->restartPush->setEnabled(hasSong);
+    ui->playPush->setEnabled(hasAnyTrack);
+    ui->pausePush->setEnabled(hasAnyTrack);
+    ui->restartPush->setEnabled(hasAnyTrack);
 
     ui->clickCheck->setVisible(hasClick);
     ui->drumsCheck->setVisible(hasDrums);

@@ -1,4 +1,4 @@
-# DrumBeats
+ # DrumBeats
 
 DrumBeats is a Qt desktop application for Windows and Linux that plays multiple synchronized audio tracks for a song. It is designed for setups that use a click track, a drumless song, and separated drums, but any of those tracks can be omitted when adding a song.
 

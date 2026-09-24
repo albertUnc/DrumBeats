@@ -9,11 +9,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
-
-if(WIN32 AND EXISTS "C:/Users/veres/MSYS2/ucrt64/lib/cmake")
-    set(CMAKE_PREFIX_PATH "C:/Users/veres/MSYS2/ucrt64/lib/cmake")
-endif()
-
 find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia)
 
 add_executable(${PROJECT_NAME} WIN32
