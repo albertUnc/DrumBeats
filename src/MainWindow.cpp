@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     auto addPageLayout = [](QWidget *page, QWidget *contents) {
         auto *pageLayout = new QVBoxLayout(page);
         pageLayout->setContentsMargins(0, 0, 0, 0);
-        pageLayout->addWidget(contents);
+        pageLayout->addWidget(contents, 0, Qt::AlignHCenter);
 
         if (contents->objectName() == "mainAppContents") return;
 
@@ -121,6 +121,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->ignoreDrumsTrackCheck, &QCheckBox::toggled, this, [this]() {
         validateDrumsPath(ui->drumsTrackLine->text());
     });
+    connect(ui->songAdderBackToMain, &QPushButton::clicked, this, &MainWindow::backToMainMenu);
     logs.write("Connected input sources to dedicated handlers.\n");
 
     //BACKGROUND

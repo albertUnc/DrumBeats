@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>797</width>
-    <height>694</height>
+    <width>813</width>
+    <height>738</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>791</width>
-      <height>621</height>
+      <height>721</height>
      </rect>
     </property>
     <widget class="QWidget" name="mainMenu">
@@ -279,17 +279,29 @@
      </widget>
     </widget>
     <widget class="QWidget" name="songAdder">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <widget class="QWidget" name="songAdderContents" native="true">
       <property name="geometry">
        <rect>
         <x>9</x>
         <y>9</y>
         <width>811</width>
-        <height>641</height>
+        <height>711</height>
        </rect>
       </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="title_howToAdd">
          <property name="maximumSize">
           <size>
@@ -307,19 +319,25 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="howToAddTuto">
          <property name="maximumSize">
           <size>
-           <width>470</width>
+           <width>700</width>
            <height>16777215</height>
           </size>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You will need to add all 3 tracks (click, song without drums, seperated drums) seperately.&lt;br/&gt;if you don't have one of the tracks, it's fine! Just check 'ignore this' and you can leave&lt;br/&gt;its field empty or type anything in. Anything that doesn't have 'ignore this' checked&lt;br/&gt;will be acknowledged and might error out if not a valid track. How to make tracks like&lt;br/&gt;this at: {link to guide}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You will need to add all 3 tracks (click, song without drums, seperated drums) seperately.&lt;br/&gt;if you don't have one of the tracks, it's fine! Just check 'ignore this' and you can leave&lt;br/&gt;its field empty or type anything in. Anything that doesn't have 'ignore this' checked&lt;br/&gt;will be acknowledged and might error out if not a valid track. How to make tracks like&lt;br/&gt;this at: {link to guide will appear here later}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="textFormat">
-          <enum>Qt::PlainText</enum>
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -339,7 +357,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="lineEdit">
          <property name="minimumSize">
           <size>
@@ -374,7 +392,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="clickTrackLine">
          <property name="minimumSize">
           <size>
@@ -393,7 +411,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QPushButton" name="browseClickTrackPush">
          <property name="maximumSize">
           <size>
@@ -411,7 +429,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QCheckBox" name="ignoreClickTrackCheck">
          <property name="maximumSize">
           <size>
@@ -424,7 +442,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="invalidClickPathLabel">
          <property name="maximumSize">
           <size>
@@ -461,7 +479,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="songTrackLine">
          <property name="minimumSize">
           <size>
@@ -480,7 +498,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QPushButton" name="browseSongTrackPush">
          <property name="minimumSize">
           <size>
@@ -504,7 +522,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QCheckBox" name="ignoreDrumlessTrackCheck">
          <property name="maximumSize">
           <size>
@@ -517,7 +535,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="invalidSongPathLabel">
          <property name="maximumSize">
           <size>
@@ -554,7 +572,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLineEdit" name="drumsTrackLine">
          <property name="minimumSize">
           <size>
@@ -573,7 +591,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QPushButton" name="browseDrumsTrackPush">
          <property name="maximumSize">
           <size>
@@ -591,7 +609,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QCheckBox" name="ignoreDrumsTrackCheck">
          <property name="maximumSize">
           <size>
@@ -604,7 +622,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="invalidDrumsPathLabel">
          <property name="maximumSize">
           <size>
@@ -641,7 +659,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QPushButton" name="addSongButton">
          <property name="maximumSize">
           <size>
@@ -657,6 +675,24 @@
          </property>
          <property name="text">
           <string>ADD SONG</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="songAdderBackToMain">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Back to main menu</string>
          </property>
         </widget>
        </item>
@@ -1349,7 +1385,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>797</width>
+     <width>813</width>
      <height>20</height>
     </rect>
    </property>
